@@ -1,0 +1,32 @@
+package br.com.alura.gerenciador.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+//oi
+//@WebServlet(urlPatterns = "/oi")
+public class OiMundoServlet extends HttpServlet{
+	
+	  @Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+			  PrintWriter out = resp.getWriter();
+			  out.println("<html>");
+			  out.println("<body>");
+			  out.println("Oie Mundo!!! meu primeiro 3 html em servlets");
+			  out.println("</body>");
+			  out.println("</html>");
+			  
+			  System.out.println("O OIMUndoServlet foi chamado");
+	}
+	
+
+}

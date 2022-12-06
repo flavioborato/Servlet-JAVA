@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import = "java.util.List , br.com.alura.gerenciador.modelos.Empresa" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista de Empresas</title>
+</head>
+<body>
+
+		<h1>Teste de listas de Empresas</br></h1>
+		<ul>
+		<%
+		List<Empresa> lista = (List<Empresa>)request.getAttribute("empresas");
+		for (Empresa empresa : lista) {
+		%>
+		<li>Nome:-<%= empresa.getNome() %> // CNPJ:- <%= empresa.getCnpj() %></li>
+		<%
+		}
+		%>
+		</ul>
+</body>
+</html>
+
+<%
+//Java Codigo - forma de programar java em HTML
+String nomeEmpresa = (String) request.getAttribute("empresanome");
+String cnpjEmpresa = (String) request.getAttribute("empresacnpj");;
+System.out.println(nomeEmpresa);
+System.out.println(cnpjEmpresa);
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Empresas cadastradas</title>
+</head>
+<body>
+Empresa <%=nomeEmpresa %> cadastrada com sucesso:- cnpj <% out.println(cnpjEmpresa); %>
+</body>
+</html>
+
+
+		<form action="<c:url value="/novaEmpresa"/>" method="post">
+			<p>Nome:- <input type="text" name="nome"/></p>
+			<p>CNPJ:- <input type="text" name="CNPJ"/></p>
+			<input type="submit"/>
+		</form>
+		
+		ou
+		
+		<form action="/gerenciador/novaEmpresa">" method="post">
+			<p>Nome:- <input type="text" name="nome"/></p>
+			<p>CNPJ:- <input type="text" name="CNPJ"/></p>
+			<input type="submit"/>
+		</form>
