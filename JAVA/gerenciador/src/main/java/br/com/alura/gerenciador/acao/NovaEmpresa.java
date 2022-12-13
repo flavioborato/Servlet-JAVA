@@ -14,9 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelos.Banco;
 import br.com.alura.gerenciador.modelos.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nomeEmpresa =  request.getParameter("nome");
 		String cnpjEmpresa =  request.getParameter("CNPJ");
 		String paraDataAbertura =  request.getParameter("data");
@@ -37,13 +38,12 @@ public class NovaEmpresa {
 			Banco banco = new Banco();
 			banco.adiciona(empresa);
 			
-			RequestDispatcher rq = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+			
 			request.setAttribute("empresanome", empresa.getNome());
 			request.setAttribute("empresacnpj", empresa.getCnpj());
 			request.setAttribute("empresadata", empresa.getDataAbertura());
-			rq.forward(request, response);
-			//response.sendRedirect("entrada?acao=ListaEmpresas"); //quando necessita redirecionar 
-			
+
+			return "forward:novaEmpresaCriada.jsp";
 			
 			
 			
